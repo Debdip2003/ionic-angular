@@ -1,3 +1,15 @@
 <ion-app>
+  <!-- Global header/navigation -->
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Navigation</ion-title>
+      <ion-buttons slot="end">
+        <ion-button routerLink="/persons">Person List</ion-button>
+        <ion-button routerLink="/input">Add Person</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Router outlet: where each page (Home, Persons, Input) is displayed -->
   <ion-router-outlet></ion-router-outlet>
 </ion-app>

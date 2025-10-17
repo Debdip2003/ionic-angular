@@ -5,11 +5,6 @@ import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from '@ionic/a
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent],
 })
-export class HomePage {
-  text= 'This is home page';
-  onChangeText(){
-    this.text="changed text";
-  }
-}
+export class HomePage {}
