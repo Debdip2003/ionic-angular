@@ -17,7 +17,7 @@ import { Subscription } from 'rxjs';
   imports: [IonButtons, IonButton, IonItem, IonList, IonIcon],
 })
 export class PersonsComponent implements OnInit, OnDestroy {
-  personList: string[] | undefined;
+  personList: { name: string }[] = [];
   private prsService = inject(PersonsService);
   private personSub: Subscription | undefined;
 
@@ -28,7 +28,7 @@ export class PersonsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.personList = this.prsService.persons;
     this.personSub = this.prsService.personChanged.subscribe(
-      (persons: string[]) => {
+      (persons: { name: string }[]) => {
         this.personList = persons;
       }
     );

@@ -6,8 +6,8 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class PersonsService {
-  public persons: any[] = [];
-  personChanged = new Subject<string[]>();
+  public persons: { name: string }[] = [];
+  personChanged = new Subject<{ name: string }[]>();
 
   constructor(private https: HttpClient) {
     this.fetchPersons();
@@ -17,17 +17,18 @@ export class PersonsService {
     this.https
       .get<any[]>('https://jsonplaceholder.typicode.com/users')
       .subscribe((data) => {
-        // this.persons = data;
-        // this.personChanged.next(this.persons);
-        console.log(data);
+        this.persons = data;
+        this.personChanged.next(this.persons);
+        // console.log(data);
       });
   }
   onPersonCreate(personName: string) {
-    this.persons.push(personName);
+    const newPerson = { name: personName };
+    this.persons.push(newPerson);
     this.personChanged.next(this.persons);
   }
   removePerson(personName: string) {
-    this.persons = this.persons.filter((p) => p !== personName);
+    this.persons = this.persons.filter((p) => p.name !== personName);
     console.log(this.persons);
     this.personChanged.next(this.persons);
   }
