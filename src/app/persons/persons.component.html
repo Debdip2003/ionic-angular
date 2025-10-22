@@ -3,7 +3,11 @@
   <ion-item>
     {{ person }}
     <ion-buttons slot="end">
-      <ion-button fill="clear" color="primary" (click)="onRemovePerson(person)">
+      <ion-button
+        fill="clear"
+        color="primary"
+        (click)="onRemovePerson(person.name)"
+      >
         <ion-icon name="close-outline" size="large"></ion-icon>
       </ion-button>
     </ion-buttons>
