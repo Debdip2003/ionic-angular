@@ -1,8 +1,12 @@
 <ion-list>
- @for (person of personList; track $index) {
+  @for (person of personList; track $index) {
   <ion-item>
-    {{person}}
+    {{ person }}
+    <ion-buttons slot="end">
+      <ion-button fill="clear" color="primary" (click)="onRemovePerson(person)">
+        <ion-icon name="close-outline" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-item>
- }
-
+  }
 </ion-list>
