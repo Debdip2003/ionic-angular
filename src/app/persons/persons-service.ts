@@ -29,7 +29,6 @@ export class PersonsService {
   }
   removePerson(personName: string) {
     this.persons = this.persons.filter((p) => p.name !== personName);
-    console.log(this.persons);
     this.personChanged.next(this.persons);
   }
 }
