@@ -4,11 +4,12 @@ import { PersonInputComponent } from './persons/person-input/person-input.compon
 
 export const routes: Routes = [
   {
-    path: '',
-    component: PersonsComponent,
+    path: 'persons',
+    loadComponent: () =>
+      import('./persons/persons.component').then((m) => m.PersonsComponent),
   },
-  {
-    path: 'person-input',
-    component: PersonInputComponent,
-  },
+  // {
+  //   path: 'person-input',
+  //   component: PersonInputComponent,
+  // },
 ];

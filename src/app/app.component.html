@@ -1,14 +1,17 @@
-<ion-app>
+<!-- <ion-app>
   <ion-header>
-    <ion-toolbar>
-      <ion-title>Navigation</ion-title>
-      <ion-buttons slot="end">
-        <ion-button routerLink="">Person List</ion-button>
-        <ion-button routerLink="/person-input">Add Person</ion-button>
-      </ion-buttons>
-    </ion-toolbar>
+    <ion-button (click)="getProductData()">Get Products</ion-button>
   </ion-header>
   <ion-content>
-    <ion-router-outlet></ion-router-outlet>
+    @for(product of productData; track $index) {
+    <p>{{ product.name }}</p>
+    <p>{{ product.price }}</p>
+    }
+  </ion-content>
+</ion-app> -->
+
+<ion-app>
+  <ion-content class="ion-padding">
+    <app-persons></app-persons>
   </ion-content>
 </ion-app>

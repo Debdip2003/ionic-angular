@@ -1,40 +1,63 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import {
-  IonList,
-  IonItem,
-  IonIcon,
-  IonButton,
-  IonButtons,
-} from '@ionic/angular/standalone';
-import { PersonsService } from './persons-service';
+  Component,
+  inject,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
+import { PersonsService } from './persons-service.service';
 import { Subscription } from 'rxjs';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-persons',
   templateUrl: './persons.component.html',
   styleUrls: ['./persons.component.css'],
   standalone: true,
-  imports: [IonButtons, IonButton, IonItem, IonList, IonIcon],
+  imports: [FormsModule, CommonModule],
+  // imports: [IonButtons, IonButton, IonItem, IonList, IonIcon],
 })
-export class PersonsComponent implements OnInit, OnDestroy {
-  personList: { name: string }[] = [];
-  private prsService = inject(PersonsService);
-  private personSub: Subscription | undefined;
+export class PersonsComponent {
+  // personList: { name: string }[] = [];
+  // private prsService = inject(PersonsService);
+  // private personSub: Subscription | undefined;
+  // onRemovePerson(personName: string) {
+  //   this.prsService.removePerson(personName);
+  // }
+  // ngOnInit(): void {
+  //   this.personList = this.prsService.persons;
+  //   this.personSub = this.prsService.personChanged.subscribe(
+  //     (persons: { name: string }[]) => {
+  //       this.personList = persons;
+  //     }
+  //   );
+  // }
+  // ngOnDestroy(): void {
+  //   this.personSub?.unsubscribe();
+  // }
 
-  onRemovePerson(personName: string) {
-    this.prsService.removePerson(personName);
-  }
+  // name: string = 'Debdip';
+  // @Input() counter: number = 0;
 
-  ngOnInit(): void {
-    this.personList = this.prsService.persons;
-    this.personSub = this.prsService.personChanged.subscribe(
-      (persons: { name: string }[]) => {
-        this.personList = persons;
-      }
-    );
-  }
+  // constructor() {
+  //   console.log('contructor');
+  //   this.name = 'Changed Name in Constructor';
+  // }
+  // ngOnInit() {
+  //   console.log('OnInit');
+  //   this.name = 'Changed Name in OnInit';
+  // }
+  // ngOnDestroy() {
+  //   console.log('OnDestroy');
+  // }
 
-  ngOnDestroy(): void {
-    this.personSub?.unsubscribe();
+  // ngOnChanges() {
+  //   console.log('OnChanges');
+  // }
+  onSubmit(form: any) {
+    console.log('Form Submitted', form);
+    console.log('hello');
   }
 }

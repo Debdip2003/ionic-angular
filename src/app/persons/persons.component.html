@@ -1,16 +1,39 @@
-<ion-list>
-  @for (person of personList; track $index) {
-  <ion-item>
-    {{ person.name }}
-    <ion-buttons slot="end">
-      <ion-button
-        fill="clear"
-        color="primary"
-        (click)="onRemovePerson(person.name)"
-      >
-        <ion-icon name="close-outline" size="large"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-item>
-  }
-</ion-list>
+<div class="container">
+  <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+    <h2>Contact Us</h2>
+    <div class="input-container">
+      <label for="name">Full Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        ngModel
+        #username="ngModel"
+      />
+      @if (username.errors) {
+      <small>Username is not valid!</small>
+      }
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        email
+        required
+        ngModel
+        #useremail="ngModel"
+      />
+      @if (useremail.errors) {
+      <small>Email is not valid!</small>
+      }
+    </div>
+    <div>
+      <label for="message">Message</label>
+      <textarea id="message" name="message" required ngModel></textarea>
+    </div>
+    <button type="submit" [disabled]="!myForm.valid">Submit</button>
+  </form>
+</div>

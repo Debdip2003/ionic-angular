@@ -12,11 +12,10 @@ export class PersonsService {
   constructor(private https: HttpClient) {
     this.fetchPersons();
   }
-
   fetchPersons() {
     this.https
       .get<any[]>('https://jsonplaceholder.typicode.com/users')
-      .subscribe((data) => {
+      .subscribe((data: { name: string }[]) => {
         this.persons = data;
         this.personChanged.next(this.persons);
         // console.log(data);
